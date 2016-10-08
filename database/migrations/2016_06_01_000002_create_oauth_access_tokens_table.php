@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use Jenssegers\Mongodb\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateOauthAccessTokensTable extends Migration
@@ -14,9 +14,9 @@ class CreateOauthAccessTokensTable extends Migration
     public function up()
     {
         Schema::create('oauth_access_tokens', function (Blueprint $table) {
-            $table->string('id', 100)->primary();
-            $table->integer('user_id')->index()->nullable();
-            $table->integer('client_id');
+            // $table->string('id', 100)->primary();
+            $table->string('user_id')->index()->nullable();
+            $table->string('client_id');
             $table->string('name')->nullable();
             $table->text('scopes')->nullable();
             $table->boolean('revoked');
