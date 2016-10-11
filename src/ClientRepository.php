@@ -63,7 +63,7 @@ class ClientRepository
         if (Passport::$personalAccessClient) {
             return Client::find(Passport::$personalAccessClient);
         } else {
-            return PersonalAccessClient::orderBy('id', 'desc')->first()->client;
+            return PersonalAccessClient::orderBy('_id', 'desc')->first()->client;
         }
     }
 
@@ -160,7 +160,7 @@ class ClientRepository
      */
     public function revoked($id)
     {
-        return Client::where('id', $id)
+        return Client::where('_id', $id)
                 ->where('revoked', true)->exists();
     }
 

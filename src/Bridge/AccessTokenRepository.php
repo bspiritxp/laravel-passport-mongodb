@@ -44,7 +44,7 @@ class AccessTokenRepository implements AccessTokenRepositoryInterface
     public function persistNewAccessToken(AccessTokenEntityInterface $accessTokenEntity)
     {
         $this->database->table('oauth_access_tokens')->insert([
-            'id' => $accessTokenEntity->getIdentifier(),
+            '_id' => $accessTokenEntity->getIdentifier(),
             'user_id' => $accessTokenEntity->getUserIdentifier(),
             'client_id' => $accessTokenEntity->getClient()->getIdentifier(),
             'scopes' => $this->formatScopesForStorage($accessTokenEntity->getScopes()),
@@ -61,7 +61,7 @@ class AccessTokenRepository implements AccessTokenRepositoryInterface
     public function revokeAccessToken($tokenId)
     {
         $this->database->table('oauth_access_tokens')
-                    ->where('id', $tokenId)->update(['revoked' => true]);
+                    ->where('_id', $tokenId)->update(['revoked' => true]);
     }
 
     /**

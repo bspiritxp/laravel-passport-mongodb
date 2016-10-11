@@ -40,7 +40,7 @@ class TokenRepository
                       ->where('client_id', $clientId);
 
         if ($except) {
-            $query->where('id', '<>', $except);
+            $query->where('_id', '<>', $except);
         }
 
         if ($prune) {
