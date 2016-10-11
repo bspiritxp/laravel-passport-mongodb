@@ -66,6 +66,6 @@ class AuthCodeRepository implements AuthCodeRepositoryInterface
     public function isAuthCodeRevoked($codeId)
     {
         return $this->database->table('oauth_auth_codes')
-                    ->where('id', $codeId)->where('revoked', 1)->exists();
+                    ->where('id', $codeId)->where('revoked', true)->exists();
     }
 }
